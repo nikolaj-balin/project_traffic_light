@@ -4,6 +4,7 @@
             v-bind:key="item"
             v-on:click="on_sort_table"
             v-bind:data-parsort="item"
+            v-bind:class="[{ active:  item == el_active_sort_par}, sort_type]"
         >
             {{translate_ru[item]}}
         </th>
@@ -19,7 +20,7 @@
                 'get_header_table',
             ]),
             ...mapState([
-                         'translate_ru'
+                         'translate_ru', 'el_active_sort_par', 'sort_type'
                      ]),
         },
         methods: {
@@ -28,7 +29,7 @@
             ]),
             on_sort_table(e) {
                 this.$store.dispatch('on_sort_table', {
-                    el: e.currentTarget, router: this.$router
+                    el: e.currentTarget, router: this.$router, route: this.$route
                 })
             }
 
