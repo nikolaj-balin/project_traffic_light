@@ -1,0 +1,235 @@
+@charset "UTF-8";
+/* Libs:
+   https://github.com/vedees/webpack-template/blob/master/README.md#import-only-sass-or-css-libs
+   ========================================================================== */
+/* Vars:
+   ========================================================================== */
+/*
+ All colors taken from:
+ https://github.com/vedees/uimini
+*/
+/* Mixins:
+   ========================================================================== */
+/* Fonts Helpers:
+   Read more: https://github.com/vedees/webpack-template/blob/master/README.md#add-fonts
+   ========================================================================== */
+/*
+  By default template support only modern format fonts
+  Without svg. Only: .woff, .woffs
+  if ypu need svg comments lines bellow and uncomments "Fonts helper all format fonts"
+
+  Usage:
+    1. Put your font to `src/assets/fonts/FOLDERNAME/FONTNAME`
+      FOLLOW: Files Required
+      Example: .woff, .woffs formats
+    2. Go to fonts.scss
+    3. Use mixon
+      Example: @include font-face("OpenSans", "../fonts/OpenSans/opensans");
+
+    Required parameters: @family, @family
+    Minor parameters: @weight, @style, @pipeline
+
+    Example Base:
+      @include font-face("OpenSans", "../fonts/OpenSans/opensans");
+    Example Situation:
+      @include font-face("OpenSans", "../fonts/OpenSans/opensansItalic", 400, italic);
+*/
+/* Fonts:
+   https://github.com/vedees/webpack-template/blob/master/README.md#import-js-files
+   ========================================================================== */
+/* Mixins:
+   ========================================================================== */
+/* Fonts Helpers:
+   Read more: https://github.com/vedees/webpack-template/blob/master/README.md#add-fonts
+   ========================================================================== */
+/*
+  By default template support only modern format fonts
+  Without svg. Only: .woff, .woffs
+  if ypu need svg comments lines bellow and uncomments "Fonts helper all format fonts"
+
+  Usage:
+    1. Put your font to `src/assets/fonts/FOLDERNAME/FONTNAME`
+      FOLLOW: Files Required
+      Example: .woff, .woffs formats
+    2. Go to fonts.scss
+    3. Use mixon
+      Example: @include font-face("OpenSans", "../fonts/OpenSans/opensans");
+
+    Required parameters: @family, @family
+    Minor parameters: @weight, @style, @pipeline
+
+    Example Base:
+      @include font-face("OpenSans", "../fonts/OpenSans/opensans");
+    Example Situation:
+      @include font-face("OpenSans", "../fonts/OpenSans/opensansItalic", 400, italic);
+*/
+/*
+  Сhoose one of the ways:
+    1. handle menthod,
+    2. use mixin;
+*/
+/*
+  // Base Helvetica (example):
+  @font-face {
+    font-family: "Helvetica-Base";
+    src: url('/assets/fonts/Helvetica/Base/Helvetica-Base.eot'); // IE9 Compat Modes
+    src: url('/assets/fonts/Helvetica/Base/Helvetica-Base.eot?#iefix') format('embedded-opentype'), // IE6-IE8
+         url('/assets/fonts/Helvetica/Base/Helvetica-Base.woff') format('woff'), // Pretty Modern Browsers
+         url('/assets/fonts/Helvetica/Base/Helvetica-Base.ttf')  format('truetype'), // Safari, Android, iOS
+         url('/assets/fonts/Helvetica/Base/Helvetica-Base.svg') format('svg'); // Legacy iOS
+  }
+*/
+/* Reset
+   ========================================================================== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+a {
+  text-decoration: none;
+}
+a:active, a:hover {
+  outline: 0;
+}
+
+ul, li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: 0;
+}
+
+img, audio, video {
+  max-width: 100%;
+  height: auto;
+}
+
+audio, canvas, iframe, video, img, svg {
+  vertical-align: middle;
+}
+
+iframe {
+  border: 0;
+}
+
+textarea {
+  resize: none;
+  /*remove the resize handle on the bottom right*/
+  overflow: auto;
+  vertical-align: top;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+input, textarea, select, button {
+  outline: none;
+  border: none;
+  font-size: 100%;
+  margin: 0;
+}
+
+button, input {
+  line-height: normal;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+  text-align: left;
+}
+
+html {
+  line-height: 1.4;
+  font-size: 18px;
+  color: #101010;
+  height: 100%;
+}
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/*# sourceMappingURL=main.css.map */
