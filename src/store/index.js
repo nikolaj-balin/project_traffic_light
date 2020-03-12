@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import mut from './mutations';
 import act from './actions';
 import get from './getters';
+import translate_ru from './translate_ru';
 
 Vue.use(Vuex);
 
@@ -28,9 +29,11 @@ export const store = new Vuex.Store({
                 place: 6, login: 'cat@mail.ru', order: 1, status: 'Ценитель красоты',
             },
         ],
+        translate_ru,
+        el_active_sort: null,
     },
     getters: {...get},
     mutations: {...mut},
     actions: {...act},
-    modules: {}
+    modules: {},
 });

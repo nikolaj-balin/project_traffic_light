@@ -2,6 +2,7 @@
   <section class="users_progress">
     <div class="container">
       <h1>Достижения пользователей</h1>
+      <panel-filter />
       <users-table />
     </div>
   </section>
@@ -10,9 +11,10 @@
 <script>
 
 import UsersTable from './UsersTable/UsersTable.vue';
+import PanelFilter from './PanelFilter/PanelFilter.vue';
 
 export default {
-  components: { UsersTable }
+  components: { UsersTable, PanelFilter }
 };
 </script>
 
