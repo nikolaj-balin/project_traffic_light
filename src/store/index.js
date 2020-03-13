@@ -35,8 +35,8 @@ export const store = new Vuex.Store({
         value_filter_login: '',
         value_filter_status: '',
         view_status_el_body: false,
-        filter_order_field_min: 0,
-        filter_order_field_max: 0,
+        filter_order_field_min_value: '',
+        filter_order_field_max_value: '',
 
     },
     getters: {...get},

@@ -59,6 +59,28 @@ let getters = {
         });
         return arr;
 
+    },
+    get_order_min: function (state, getters) {
+
+        let arr = [ ...state.users_table_data];
+        let min = arr[0].order;
+
+        arr.forEach(item => {item.order < min ? min = item.order : ''} );
+
+        return min;
+
+
+    },
+    get_order_max: function (state, getters) {
+
+        let arr = [ ...state.users_table_data];
+        let max = arr[0].order;
+
+        arr.forEach(item => {item.order > max ? max = item.order : ''} );
+
+        return max;
+
+
     }
 };
 

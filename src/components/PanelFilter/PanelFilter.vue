@@ -27,11 +27,22 @@
             </div>
         </div>
         <div class="filter_order">
-            <label class="filter_order_field_min" for="">от<input type="text"></label>
-            <label class="filter_order_field_max" for="">до<input type="text"></label>
+            <label class="filter_order_field_min">
+                от
+                <input type="number"
+                       v-bind:placeholder="get_order_min"
+                       v-model.trim="filter_order_field_min_value"
+                >
+            </label>
+            <label class="filter_order_field_max">
+                до
+                <input type="number"
+                       v-bind:placeholder="get_order_max"
+                       v-model.trim="filter_order_field_max_value"
+                >
+            </label>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -40,14 +51,34 @@
     export default {
         name: "PanelFilter",
         computed: {
-            ...mapState([ 'value_filter_login', 'value_filter_status', 'view_status_el_body']),
-            ...mapGetters(['get_status_unic_arr']),
+            ...mapState([ 'value_filter_login', 'value_filter_status', 'view_status_el_body',]),
+            ...mapGetters(['get_status_unic_arr', 'get_order_min', 'get_order_max']),
             value_filter_login: {
                 get: function() {
                     return this.$store.state.value_filter_login;
                 },
                 set: function(value){
                     this.$store.dispatch('set_value_filter_login', {
+                        value, router: this.$router, route: this.$route
+                    });
+                }
+            },
+            filter_order_field_min_value: {
+                get: function() {
+                    return this.$store.state.filter_order_field_min_value;
+                },
+                set: function(value){
+                    this.$store.dispatch('set_filter_order_field_min_value', {
+                        value, router: this.$router, route: this.$route
+                    });
+                }
+            },
+            filter_order_field_max_value: {
+                get: function() {
+                    return this.$store.state.filter_order_field_max_value;
+                },
+                set: function(value){
+                    this.$store.dispatch('set_filter_order_field_max_value', {
                         value, router: this.$router, route: this.$route
                     });
                 }
@@ -61,9 +92,18 @@
                 this.$store.dispatch('set_status_value', { event, router: this.$router, route: this.$route})
             }
         },
+
     }
 </script>
 
 <style scoped>
+    input[type='number'] {
+        -moz-appearance:textfield;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
 
 </style>

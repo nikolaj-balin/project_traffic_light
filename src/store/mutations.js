@@ -13,6 +13,12 @@ let mutations = {
     },
     set_view_status_el_body: function (state, {value}) {
         state.view_status_el_body = value;
+    },
+    set_filter_order_field_min_value: function (state, {value}) {
+        state.filter_order_field_min_value = value;
+    },
+    set_filter_order_field_max_value: function (state, {value}) {
+        state.filter_order_field_max_value = value;
     }
 };
 

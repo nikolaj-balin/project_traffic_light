@@ -47,6 +47,18 @@ let actions = {
     },
     set_view_status_el_body: function ({state, commit}) {
         commit('set_view_status_el_body', {value: !state.view_status_el_body});
+    },
+    set_filter_order_field_min_value: function ({state, commit}, {value, router, route}) {
+        let query = route.query;
+
+        commit('set_filter_order_field_min_value', {value});
+        router.push({ path: '/', query: { ...query, filter_order_min: value } });
+    },
+    set_filter_order_field_max_value: function ({state, commit}, {value, router, route}) {
+        let query = route.query;
+
+        commit('set_filter_order_field_max_value', {value});
+        router.push({ path: '/', query: { ...query, filter_order_max: value } });
     }
 };
 
