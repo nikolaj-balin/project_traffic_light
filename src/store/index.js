@@ -32,6 +32,12 @@ export const store = new Vuex.Store({
         translate_ru,
         el_active_sort_par: 'none',
         sort_type: 'none',
+        value_filter_login: '',
+        value_filter_status: '',
+        view_status_el_body: false,
+        filter_order_field_min: 0,
+        filter_order_field_max: 0,
+
     },
     getters: {...get},
     mutations: {...mut},
