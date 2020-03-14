@@ -7,6 +7,18 @@ import translate_ru from './translate_ru';
 
 Vue.use(Vuex);
 
+const myPlugin = store => {
+    // вызывается после инициализации хранилища
+    store.commit('set_filter_order_field_min_value_s', {value: store.getters.get_order_min});
+    store.commit('set_filter_order_field_max_value_s', {value: store.getters.get_order_max});
+    // store.subscribe((mutation, state) => {
+    //     // вызывается после каждой мутации
+    //     // мутация передаётся в формате `{ type, payload }`.
+    // });
+};
+
+
+
 export const store = new Vuex.Store({
     state: {
         users_table_data: [
@@ -37,8 +49,11 @@ export const store = new Vuex.Store({
         view_status_el_body: false,
         filter_order_field_min_value: '',
         filter_order_field_max_value: '',
+        filter_order_field_max_value_s: '',
+        filter_order_field_min_value_s: '',
 
     },
+    plugins: [myPlugin],
     getters: {...get},
     mutations: {...mut},
     actions: {...act},

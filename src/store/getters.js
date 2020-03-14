@@ -14,9 +14,12 @@ let getters = {
         let sort_type = state.sort_type;
         let value_filter_login = state.value_filter_login;
         let value_filter_status = state.value_filter_status;
+        let filter_order_field_max_value_s = state.filter_order_field_max_value_s;
+        let filter_order_field_min_value_s = state.filter_order_field_min_value_s;
 
-        arr = arr.filter((value) => {return new RegExp(value_filter_login).test(value.login)});
-        arr = arr.filter((value) => {return new RegExp(value_filter_status).test(value.status)});
+        arr = arr.filter((value) => { return new RegExp(value_filter_login).test(value.login) });
+        arr = arr.filter((value) => { return new RegExp(value_filter_status).test(value.status) });
+        arr = arr.filter((value) => { return value.order <= +filter_order_field_max_value_s && value.order >= +filter_order_field_min_value_s });
 
         switch (sort_type) {
             case 'ASC':
@@ -48,7 +51,6 @@ let getters = {
             default:
                 break;
         }
-
         return arr;
     },
     get_status_unic_arr: function (state, getters) {
@@ -58,30 +60,26 @@ let getters = {
             return a > b ? 1 : -1;
         });
         return arr;
-
     },
     get_order_min: function (state, getters) {
 
         let arr = [ ...state.users_table_data];
-        let min = arr[0].order;
-
-        arr.forEach(item => {item.order < min ? min = item.order : ''} );
-
+        let min = arr.reduce((accumulator, currentValue) => Math.min( accumulator, currentValue.order ), arr[0].order);
         return min;
-
-
     },
     get_order_max: function (state, getters) {
 
         let arr = [ ...state.users_table_data];
-        let max = arr[0].order;
-
-        arr.forEach(item => {item.order > max ? max = item.order : ''} );
-
+        let max = arr.reduce((accumulator, currentValue) => Math.max( accumulator, currentValue.order ), arr[0].order);
         return max;
+    },
+    get_sort_arr: (state, getters)  => item => {
+        let get_header_table = getters.get_header_table;
+        let arr = [];
 
-
-    }
+        get_header_table.forEach((i) => arr.push(item[i]));
+        return arr;
+    },
 };
 
 export default getters;

@@ -32,6 +32,7 @@
                 <input type="number"
                        v-bind:placeholder="get_order_min"
                        v-model.trim="filter_order_field_min_value"
+                       v-on:keyup.enter.prevent="order_filter_view"
                 >
             </label>
             <label class="filter_order_field_max">
@@ -39,8 +40,13 @@
                 <input type="number"
                        v-bind:placeholder="get_order_max"
                        v-model.trim="filter_order_field_max_value"
+                       v-on:keyup.enter.prevent="order_filter_view"
                 >
             </label>
+            <div class="filter_order_blind"></div>
+            <div class="button_views_order"
+                 v-on:click="order_filter_view"
+            >Показать</div>
         </div>
     </div>
 </template>
@@ -86,10 +92,13 @@
         },
         methods: {
             ...mapActions ( [
-                'set_filter_login', 'set_view_status_el_body'
+                'set_filter_login', 'set_view_status_el_body',
             ]),
             set_status_value: function (event) {
                 this.$store.dispatch('set_status_value', { event, router: this.$router, route: this.$route})
+            },
+            order_filter_view: function (event) {
+                this.$store.dispatch('order_filter_view', { event, router: this.$router, route: this.$route})
             }
         },
 

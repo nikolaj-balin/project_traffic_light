@@ -52,13 +52,44 @@ let actions = {
         let query = route.query;
 
         commit('set_filter_order_field_min_value', {value});
-        router.push({ path: '/', query: { ...query, filter_order_min: value } });
     },
     set_filter_order_field_max_value: function ({state, commit}, {value, router, route}) {
         let query = route.query;
 
         commit('set_filter_order_field_max_value', {value});
-        router.push({ path: '/', query: { ...query, filter_order_max: value } });
+    },
+    order_filter_view: function ({state, commit, getters}, { router, route }) {
+        let query = route.query;
+        let filter_order_field_min_value = +state.filter_order_field_min_value;
+        let filter_order_field_max_value = +state.filter_order_field_max_value;
+        let min = +getters.get_order_min;
+        let max = +getters.get_order_max;
+
+        if( filter_order_field_max_value > max || filter_order_field_max_value < min){
+            commit('set_filter_order_field_max_value_s', {value: max });
+            commit('set_filter_order_field_max_value', {value: ''});
+        } else {
+            commit('set_filter_order_field_max_value_s', {value: filter_order_field_max_value});
+        };
+
+        if(filter_order_field_min_value <= max && filter_order_field_min_value >= min){
+            if(filter_order_field_min_value <= state.filter_order_field_max_value_s){
+                commit('set_filter_order_field_min_value_s', {value: filter_order_field_min_value});
+            } else {
+                commit('set_filter_order_field_min_value_s', {value: min});
+                commit('set_filter_order_field_min_value', {value: ''});
+            }
+        } else {
+            commit('set_filter_order_field_min_value_s', {value: min});
+            commit('set_filter_order_field_min_value', {value: ''});
+        };
+
+        if(query.filter_order_min != state.filter_order_field_min_value_s ||  query.filter_order_max != state.filter_order_field_max_value_s){
+            router.push({
+                path: '/', query: { ...query, filter_order_max: state.filter_order_field_max_value_s, filter_order_min: state.filter_order_field_min_value_s }
+            });
+        }
+
     }
 };
 

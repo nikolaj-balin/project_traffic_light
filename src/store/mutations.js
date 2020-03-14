@@ -19,6 +19,12 @@ let mutations = {
     },
     set_filter_order_field_max_value: function (state, {value}) {
         state.filter_order_field_max_value = value;
+    },
+    set_filter_order_field_max_value_s: function (state, {value}) {
+        state.filter_order_field_max_value_s = value;
+    },
+    set_filter_order_field_min_value_s: function (state, {value}) {
+        state.filter_order_field_min_value_s = value;
     }
 };
 

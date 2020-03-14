@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import beforeEnter from './history/beforeEnter.js';
 Vue.use(VueRouter);
 
 // store
@@ -16,7 +17,7 @@ import './assets/scss/main.scss'
 import './assets/css/main.css'
 
 const routes = [
-  { path: '/', component: App },
+  { path: '/', component: App, beforeEnter },
 ];
 
 const router = new VueRouter({
