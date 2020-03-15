@@ -1,20 +1,22 @@
-/* Vars:
-   ========================================================================== */
-
 // Font
 $mainFont                : 'Montserrat', Helvetica, Arial, sans-serif;
 
 // Size
 $mainFontColor           : #101010;
-$mainFontSize            : 18px;
+$mainFontSize            : 21px;
 $mainFontWeight          : 400;
 $mainLineHeight          : 1.4;
 
-$desktopWidth            : 1280px;
-$smDesktopWidth          : 1024px;
+$xxlDesktopWidth         : 1900px;
+$xlDesktopWidth          : 1600px;
+$desktopWidth            : 1170px;
+$smDesktopWidth          : 980px;
 $tableWidth              : 768px;
-$smTableWidth            : 640px;
+$tableWidthsm            : 600px;
 $phoneWidth              : 480px;
+$mdPhoneWidth            : 414px;
+$mmPhoneWidth            : 375px;
+$mxPhoneWidth            : 360px;
 $smPhoneWidth            : 320px;
 
 /*

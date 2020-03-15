@@ -32,8 +32,6 @@
                     el: e.currentTarget, router: this.$router, route: this.$route
                 })
             }
-
-
         },
     }
 </script>

@@ -5,7 +5,7 @@
         </div>
         <div class="filter_status">
             <div class="filter_status_label"
-                 v-bind:class="{active: value_filter_status.length != 0}"
+                 v-bind:class="{active: value_filter_status.length != 0, show: view_status_el_body}"
                  v-on:click="set_view_status_el_body"
             >
                 {{value_filter_status.length == 0 ? 'Выберите статус' : value_filter_status}}
@@ -14,6 +14,7 @@
                 <div v-for="(item, key) in get_status_unic_arr"
                      class="filter_status_row"
                      v-bind:data-status="item"
+                     v-bind:class="{active: value_filter_status == item}"
                      v-on:click="set_status_value"
                 >
                     {{item}}
@@ -27,22 +28,20 @@
             </div>
         </div>
         <div class="filter_order">
-            <label class="filter_order_field_min">
                 от
                 <input type="number"
+                       class="filter_order_field_min"
                        v-bind:placeholder="get_order_min"
                        v-model.trim="filter_order_field_min_value"
                        v-on:keyup.enter.prevent="order_filter_view"
                 >
-            </label>
-            <label class="filter_order_field_max">
                 до
                 <input type="number"
+                       class="filter_order_field_max"
                        v-bind:placeholder="get_order_max"
                        v-model.trim="filter_order_field_max_value"
                        v-on:keyup.enter.prevent="order_filter_view"
                 >
-            </label>
             <div class="filter_order_blind"></div>
             <div class="button_views_order"
                  v-on:click="order_filter_view"
