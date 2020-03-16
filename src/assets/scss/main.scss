@@ -102,11 +102,28 @@ li {
         flex-direction: row;
         background-color: #c5cdc9;
         padding: rem(10) rem(10);
+        @media screen and (max-width: $tableWidthsm) {
+          flex-wrap: wrap;
+        }
 
         .filter_login {
           @include panel_filter();
           margin-right: rem(15);
           width: 21%;
+
+          @media screen and (max-width: $desktopWidth) {
+            width: 30%;
+          }
+
+          @media screen and (max-width: $tableWidth) {
+            width: 33.3%;
+          }
+
+          @media screen and (max-width: $tableWidthsm) {
+            width: 100.0%;
+            margin-right: 0;
+            margin-bottom: rem(15);
+          }
 
 
           input {
@@ -123,7 +140,22 @@ li {
           position: relative;
           @include panel_filter();
           margin-right: rem(15);
+
           width: 21%;
+
+          @media screen and (max-width: $desktopWidth) {
+            width: 30%;
+          }
+
+          @media screen and (max-width: $tableWidth) {
+            width: 33.3%;
+          }
+
+          @media screen and (max-width: $tableWidthsm) {
+            width: 100.0%;
+            margin-right: 0;
+            margin-bottom: rem(15);
+          }
 
           .filter_status_label {
             background-color: #fff;
@@ -213,6 +245,29 @@ li {
         .filter_order {
           width: 21%;
 
+          .filter_order_gridcont {
+            display: flex;
+            z-index: 11;
+            //grid-template-areas: "mintext mininput maxtext maxinput";
+            //grid-template-columns: max-content 1fr max-content 1fr;
+            //grid-template-rows: 1fr;
+            flex-direction: row;
+            width: 100%;
+          }
+          //padding: 0;
+
+          @media screen and (max-width: $desktopWidth) {
+            width: 30%;
+          }
+
+          @media screen and (max-width: $tableWidth) {
+            width: 33.3%;
+          }
+
+          @media screen and (max-width: $tableWidthsm) {
+            width: 100.0%;
+          }
+
           @include panel_filter();
 
           background-color: #e4e6e5;
@@ -222,18 +277,44 @@ li {
           justify-content: center;
           flex-direction: row;
 
+          .filter_order_field_min_text {
+            grid-area: mintext;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: rem(15);
+          }
+
+          .filter_order_field_max_text {
+            grid-area: maxtext;
+            padding-right: rem(15);
+            padding-left: rem(15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+
           .filter_order_field_min {
-            width: 30%;
-            height: 100%;
-            margin-left: rem(15);
-            margin-right: rem(15);
+            //width: 30%;
+            //height: 100%;
+            //margin-left: rem(15);
+            //margin-right: rem(15);
             padding: rem(5);
+            flex-grow: 1;
+            flex-shrink: 1;
+            width: 30%;
+            font-size: rem(16);
           }
           .filter_order_field_max {
-            width: 30%;
-            margin-left: rem(15);
-            height: 100%;
+            //width: 30%;
+            //margin-left: rem(15);
+            //height: 100%;
             padding: rem(5);
+            flex-grow: 1;
+            flex-shrink: 1;
+            width: 30%;
+            font-size: rem(14);
           }
 
 
@@ -243,6 +324,16 @@ li {
 
           .filter_order_blind {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+
+            &.show {
+              display: block;
+            }
           }
         }
 
@@ -253,9 +344,76 @@ li {
         width: 100%;
         padding: rem(10);
         background-color: #f3f3f3;
+        min-height: 100vw;
         @include flex_start_center();
+        justify-content: flex-start;
 
         @include table_style();
+
+        .thead_sort {
+          position: relative;
+
+          &.active.ASC {
+            .filter_icon {
+              &:before {
+                background-image: url("../img/icon_sort_active.png");
+              }
+
+            }
+          }
+
+          &.active.DESC {
+            .filter_icon {
+              &:after {
+                background-image: url("../img/icon_sort_active.png");
+              }
+
+            }
+          }
+
+          .filter_icon {
+            width: rem(30);
+            height: rem(22);
+            position: absolute;
+            right: -(rem(3));
+            top: 50%;
+            margin-top: -(rem(11));
+
+            &:before {
+              content: '';
+              display: block;
+              background-position-x: center;
+              background-position-y: bottom;
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-image: url("../img/icon_sort.png");
+              position: absolute;
+              width: 100%;
+              height: 45%;
+              top: 0;
+              left: 0;
+              transform: rotate(180deg);
+              cursor: pointer;
+            }
+
+            &:after {
+              content: '';
+              display: block;
+              background-position-x: center;
+              background-position-y: top;
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-image: url("../img/icon_sort.png");
+              position: absolute;
+              width: 100%;
+              height: 45%;
+              left: 0;
+              bottom: 0;
+              cursor: pointer;
+
+            }
+          }
+        }
       }
     }
   }

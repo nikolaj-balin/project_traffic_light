@@ -28,24 +28,29 @@
             </div>
         </div>
         <div class="filter_order">
-                от
+            <div class="filter_order_gridcont">
+                <span class="filter_order_field_min_text">от</span>
                 <input type="number"
                        class="filter_order_field_min"
                        v-bind:placeholder="get_order_min"
                        v-model.trim="filter_order_field_min_value"
                        v-on:keyup.enter.prevent="order_filter_view"
                 >
-                до
+                <span class="filter_order_field_max_text">до</span>
                 <input type="number"
                        class="filter_order_field_max"
                        v-bind:placeholder="get_order_max"
                        v-model.trim="filter_order_field_max_value"
                        v-on:keyup.enter.prevent="order_filter_view"
                 >
-            <div class="filter_order_blind"></div>
+            </div>
             <div class="button_views_order"
                  v-on:click="order_filter_view"
             >Показать</div>
+            <div class="filter_order_blind"
+                 v-bind:class="{show: succes_filter_order_blind}"
+                 v-on:click="filter_order_blind_hidden"
+            ></div>
         </div>
     </div>
 </template>
@@ -57,7 +62,7 @@
         name: "PanelFilter",
         computed: {
             ...mapState([ 'value_filter_login', 'value_filter_status', 'view_status_el_body',]),
-            ...mapGetters(['get_status_unic_arr', 'get_order_min', 'get_order_max']),
+            ...mapGetters(['get_status_unic_arr', 'get_order_min', 'get_order_max',]),
             value_filter_login: {
                 get: function() {
                     return this.$store.state.value_filter_login;
@@ -87,18 +92,24 @@
                         value, router: this.$router, route: this.$route
                     });
                 }
-            }
+            },
+            succes_filter_order_blind: {
+                get: function() {
+                    return this.$store.getters.succes_filter_order_blind(true);
+                },
+            },
+
         },
         methods: {
             ...mapActions ( [
-                'set_filter_login', 'set_view_status_el_body',
+                'set_filter_login', 'set_view_status_el_body','filter_order_blind_hidden'
             ]),
             set_status_value: function (event) {
                 this.$store.dispatch('set_status_value', { event, router: this.$router, route: this.$route})
             },
             order_filter_view: function (event) {
                 this.$store.dispatch('order_filter_view', { event, router: this.$router, route: this.$route})
-            }
+            },
         },
 
     }

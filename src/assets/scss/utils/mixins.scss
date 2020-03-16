@@ -56,7 +56,7 @@
 }
 
 @mixin panel_filter() {
-  height: rem(32);
+  height: rem(44);
   font-size: rem(18);
   padding: 4px 11px;
   color: #000000a6;
@@ -81,19 +81,19 @@
     border-collapse: collapse;
     width: 100%;
     max-width: 100%;
-    white-space: nowrap;
+    white-space: normal;
     background-color: white;
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2 );
   }
   .resp-tab td, .resp-tab th {
     text-align: center;
     padding: 8px;
-    font-size: 15px;
+    font-size: rem(15);
     border: none;
     font-family: Verdana, sans-serif;
   }
   .resp-tab td {
-    font-size: 13px;
+    font-size: rem(13);
     border-right: 1px solid #E6E4E4;
   }
   .resp-tab th {
@@ -125,16 +125,20 @@
       overflow-x: auto;
     }
     .resp-tab td, .resp-tab th {
-      padding: 10px 2px;
+      padding: rem(10) rem(2);
       box-sizing: border-box;
       overflow-x: hidden;
       overflow-y: auto;
-      width: 160px;
-      font-size: 13px;
+      width: rem(190);
+      height: rem(54);
+      font-size: rem(13);
       text-overflow: ellipsis;
     }
     .resp-tab thead th {
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .resp-tab tbody tr {
       display: table-cell;
@@ -153,8 +157,10 @@
       border-right: 1px solid #E6E4E4;
     }
     .resp-tab td {
-      display: block;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 

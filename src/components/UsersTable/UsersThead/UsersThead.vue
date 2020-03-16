@@ -5,7 +5,9 @@
             v-on:click="on_sort_table"
             v-bind:data-parsort="item"
             v-bind:class="[{ active:  item == el_active_sort_par}, sort_type]"
+            class="thead_sort"
         >
+            <span class="filter_icon"></span>
             {{translate_ru[item]}}
         </th>
     </tr>

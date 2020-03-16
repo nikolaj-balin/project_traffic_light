@@ -90,6 +90,12 @@ let actions = {
             });
         }
 
+    },
+    filter_order_blind_hidden: function ({state, commit, getters}, e) {
+        e.currentTarget.classList.remove('show');
+        let button = e.currentTarget.parentElement.querySelector('.button_views_order');
+        button.classList.add('show');
+
     }
 };
 

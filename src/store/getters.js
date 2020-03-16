@@ -80,6 +80,28 @@ let getters = {
         get_header_table.forEach((i) => arr.push(item[i]));
         return arr;
     },
+    succes_filter_order_blind: (state, getters)  => p => {
+        let order_min = getters.get_order_min;
+        let order_max = getters.get_order_max;
+        let filter_order_field_max_value = state.filter_order_field_max_value;
+        let filter_order_field_max_value_s = state.filter_order_field_max_value_s;
+        let filter_order_field_min_value = state.filter_order_field_min_value;
+        let filter_order_field_min_value_s = state.filter_order_field_min_value_s;
+        let max_n = +filter_order_field_max_value_s != +order_max;
+        let min_n = +filter_order_field_min_value_s != +order_min;
+        let max_v = +filter_order_field_max_value_s != +filter_order_field_max_value;
+        let min_v = +filter_order_field_min_value_s != +filter_order_field_min_value;
+
+        if(filter_order_field_max_value.length == 0 && max_n){
+            return true;
+        }else if( filter_order_field_min_value.length == 0 && min_n){
+            return true;
+        }else if(filter_order_field_max_value.length != 0 && max_v){
+            return true;
+        }else if( filter_order_field_min_value.length != 0 && min_v){
+            return true;
+        }
+    }
 };
 
 export default getters;

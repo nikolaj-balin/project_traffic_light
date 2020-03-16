@@ -1,6 +1,6 @@
 <template>
   <div class="users_table">
-    <table>
+    <table class="resp-tab">
       <thead>
         <users-thead />
       </thead>
