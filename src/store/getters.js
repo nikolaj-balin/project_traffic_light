@@ -80,7 +80,7 @@ let getters = {
         get_header_table.forEach((i) => arr.push(item[i]));
         return arr;
     },
-    succes_filter_order_blind: (state, getters)  => p => {
+    succes_filter_order_blind: function(state, getters){
         let order_min = getters.get_order_min;
         let order_max = getters.get_order_max;
         let filter_order_field_max_value = state.filter_order_field_max_value;

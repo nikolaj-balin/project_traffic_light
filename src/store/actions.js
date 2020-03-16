@@ -58,7 +58,7 @@ let actions = {
 
         commit('set_filter_order_field_max_value', {value});
     },
-    order_filter_view: function ({state, commit, getters}, { router, route }) {
+    order_filter_view: function ({state, commit, getters}, { event, router, route }) {
         let query = route.query;
         let filter_order_field_min_value = +state.filter_order_field_min_value;
         let filter_order_field_max_value = +state.filter_order_field_max_value;
@@ -90,11 +90,38 @@ let actions = {
             });
         }
 
+        if(event.currentTarget.classList.contains("show")){
+            event.currentTarget.classList.remove("show");
+        }
+
     },
     filter_order_blind_hidden: function ({state, commit, getters}, e) {
-        e.currentTarget.classList.remove('show');
+        // e.currentTarget.classList.remove('show');
         let button = e.currentTarget.parentElement.querySelector('.button_views_order');
         button.classList.add('show');
+
+        let elem = document.elementFromPoint(e.clientX, e.clientY);
+        let event = new Event('click', {bubbles: true}); 
+        elem.dispatchEvent(event);
+        elem.focus();
+
+    },
+    button_views_order_hiden: function ({state, commit, getters}, e) {
+        let button = e.currentTarget.closest('.filter_order').querySelector('.button_views_order');
+        if(button.classList.contains("show")){
+            button.classList.remove("show");
+        }
+    },
+    hidden_filter_status_blind: function ({state, commit, getters}, e) {
+
+
+        commit('set_view_status_el_body', {value: !state.view_status_el_body});
+        e.currentTarget.closest('.filter_status').querySelector('.filter_status_body').classList.remove('show');
+
+        let elem = document.elementFromPoint(e.clientX, e.clientY);
+        let event = new Event('click', {bubbles: true});
+        elem.dispatchEvent(event);
+        elem.focus();
 
     }
 };

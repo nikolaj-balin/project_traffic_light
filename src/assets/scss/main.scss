@@ -140,8 +140,9 @@ li {
           position: relative;
           @include panel_filter();
           margin-right: rem(15);
-
           width: 21%;
+
+
 
           @media screen and (max-width: $desktopWidth) {
             width: 30%;
@@ -167,6 +168,11 @@ li {
             justify-content: flex-start;
             position: relative;
             user-select: none;
+
+            &.show {
+              z-index: 20;
+            }
+
 
             &:after {
               position: absolute;
@@ -202,10 +208,11 @@ li {
             flex-direction: column;
             border: 1px solid #c5cdc9;
             border-radius: 3px;
-            z-index: 9;
+
 
             &.show{
               display: block;
+              z-index: 20;
             }
 
             .filter_status_row {
@@ -240,14 +247,29 @@ li {
               }
             }
           }
+
+          .filter_status_blind {
+            display: none;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 18;
+          }
+
+          .filter_status_body.show+.filter_status_blind {
+            display: block;
+          }
         }
 
         .filter_order {
           width: 21%;
+          position: relative;
 
           .filter_order_gridcont {
             display: flex;
-            z-index: 11;
+            z-index: 12;
             //grid-template-areas: "mintext mininput maxtext maxinput";
             //grid-template-columns: max-content 1fr max-content 1fr;
             //grid-template-rows: 1fr;
@@ -320,6 +342,46 @@ li {
 
           .button_views_order {
             display: none;
+            position: absolute;
+            left: 50%;
+            align-items: center;
+            justify-content: center;
+            bottom: calc(100% + 0.25rem);
+            height: 80%;
+            margin-left: -3.5rem;
+            width: 7rem;
+
+            color: #f8f8f8;
+
+            & span {
+              background-color: #ffa218;
+              align-items: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: rem(5);
+              height: 100%;
+              width: 100%;
+              z-index: 1;
+            }
+
+            &:after {
+              content: '';
+              display: block;
+              position: absolute;
+              left: 50%;
+              width: 0.5rem;
+              height: 0.5rem;
+              transform: rotate(45deg);
+              top: 100%;
+              margin-top: -0.25rem;
+              margin-left: -0.25rem;
+              background-color: #ffa218;
+            }
+
+            &.show {
+              display: flex;
+            }
           }
 
           .filter_order_blind {
@@ -329,11 +391,17 @@ li {
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 10;
+            cursor: default;
+
 
             &.show {
               display: block;
+              z-index: 10;
             }
+          }
+
+          .button_views_order.show+.filter_order_blind.show {
+            display: none;
           }
         }
 
